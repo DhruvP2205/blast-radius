@@ -1,6 +1,8 @@
 
 # 💥 Blast Radius: Chaos Engineering Simulator
 
+![Banner](screenshot/BLAST-RADIUS-Banner.png)
+
 <div align="center">
 
 ![Hackathon](https://img.shields.io/badge/Hackathon-System_Collapse-orange?style=for-the-badge&logo=fire) ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
