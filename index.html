@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blast Radius</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='logoGradient' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%236366f1'></stop><stop offset='100%' stop-color='%23ec4899'></stop></linearGradient></defs><path d='M50 5 L95 27.5 L95 72.5 L50 95 L5 72.5 L5 27.5 Z' fill='none' stroke='url(%23logoGradient)' stroke-width='8' stroke-linecap='round'></path><circle cx='50' cy='50' r='15' fill='%23333'></circle><path d='M50 5 L50 25' stroke='%23333' stroke-width='4'></path><path d='M50 95 L50 75' stroke='%23333' stroke-width='4'></path><path d='M95 27.5 L75 37.5' stroke='%23333' stroke-width='4'></path><path d='M5 72.5 L25 62.5' stroke='%23333' stroke-width='4'></path></svg>" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
+
+      body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      /* Simulation specific animations */
+      @keyframes pulse-line {
+        0% { stroke-dashoffset: 20; }
+        100% { stroke-dashoffset: 0; }
+      }
+
+      @keyframes glitch {
+        0% { transform: translate(0); }
+        20% { transform: translate(-2px, 2px); }
+        40% { transform: translate(-2px, -2px); }
+        60% { transform: translate(2px, 2px); }
+        80% { transform: translate(2px, -2px); }
+        100% { transform: translate(0); }
+      }
+
+      .animate-glitch {
+        animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+      }
+
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-2px); }
+        50% { transform: translateX(2px); }
+        75% { transform: translateX(-1px); }
+      }
+
+      .animate-shake {
+        animation: shake 0.4s ease-in-out infinite;
+      }
+
+      @keyframes shockwave {
+        0% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+        70% { transform: scale(2.5); opacity: 0; box-shadow: 0 0 0 40px rgba(239, 68, 68, 0); }
+        100% { transform: scale(3); opacity: 0; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+      }
+
+      .animate-shockwave {
+        animation: shockwave 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+      }
+      
+      @keyframes compensation-flicker {
+        0%, 100% { opacity: 1; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
+        50% { opacity: 0.8; box-shadow: 0 0 5px rgba(59, 130, 246, 0.2); }
+      }
+      
+      .animate-compensation {
+        animation: compensation-flicker 1.5s ease-in-out infinite;
+      }
+
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes zoom-in {
+        from { transform: scale(0.95); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+      }
+
+      .animate-fade-in {
+        animation: fade-in 1s ease-out forwards;
+      }
+      
+      .animate-zoom-in {
+        animation: zoom-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .connection-line {
+        stroke-dasharray: 5;
+        animation: pulse-line 1s linear infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0?deps=react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client?deps=react@18.2.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.2.0",
+    "recharts": "https://esm.sh/recharts@2.12.2?deps=react@18.2.0,react-dom@18.2.0",
+    "framer-motion": "https://esm.sh/framer-motion@11.0.8?deps=react@18.2.0,react-dom@18.2.0",
+    "react-icons/si": "https://esm.sh/react-icons@5.0.1/si?deps=react@18.2.0",
+    "react-icons/fa": "https://esm.sh/react-icons@5.0.1/fa?deps=react@18.2.0",
+    "react-icons/go": "https://esm.sh/react-icons@5.0.1/go?deps=react@18.2.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-icons/": "https://esm.sh/react-icons@^5.5.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
